@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: polishbot-deployment
+  namespace: polishbot
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: polishbot
+  template:
+    metadata:
+      labels:
+        app: polishbot
+    spec:
+      containers:
+      - name: polishbot
+        # image: naga333/polishbot:dec8-2025-v2.2
+        image: 950310456124.dkr.ecr.us-east-1.amazonaws.com/polishbot/felp-polishbot:v0.1.0
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8000
